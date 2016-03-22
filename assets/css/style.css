@@ -1,0 +1,8 @@
+.bedard-webhooks td.url-column:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.bedard-webhooks td.url-column i.icon-clipboard {
+    padding-right: 4px;
+}

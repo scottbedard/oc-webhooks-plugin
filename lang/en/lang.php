@@ -15,12 +15,15 @@ return [
     //
     'hooks' => [
         'controller' => 'Web Hooks',
+        'copied_to_clipboard' => 'Copied webhook to clipboard!',
         'list_title' => 'Manage Web Hooks',
         'model' => 'Hook',
         'columns' => [
             'name' => 'Name',
             'directory' => 'Directory',
             'executed_at' => 'Last executed',
+            'logs_count' => 'Logs',
+            'url' => 'URL',
         ],
         'form' => [
             'directory_label' => 'Execute from directory',

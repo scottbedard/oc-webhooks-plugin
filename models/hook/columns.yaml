@@ -6,14 +6,17 @@ columns:
     name:
         label: bedard.webhooks::lang.hooks.columns.name
 
-    directory:
-        label: bedard.webhooks::lang.hooks.columns.directory
-
-    url:
-        label: bedard.webhooks::lang.hooks.columns.url
-        type: partial
-        path: $/bedard/webhooks/models/hook/_url.htm
-
     executed_at:
         label: bedard.webhooks::lang.hooks.columns.executed_at
         type: datetime
+
+    logs_count:
+        label: bedard.webhooks::lang.hooks.columns.logs_count
+        type: number
+
+    url:
+        cssClass: url-column
+        label: bedard.webhooks::lang.hooks.columns.url
+        type: partial
+        path: $/bedard/webhooks/models/hook/_url.htm
+        clickable: false

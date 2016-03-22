@@ -1,7 +1,10 @@
 <?php namespace Bedard\Webhooks\Models;
 
+use DB;
 use Model;
+use Backend;
 use Carbon\Carbon;
+use Bedard\Webhooks\Models\Log;
 
 /**
  * Hook Model
@@ -46,16 +49,63 @@ class Hook extends Model
     }
 
     /**
+     * @var array Relations
+     */
+    public $hasMany = [
+        'logs' => [
+            'Bedard\Webhooks\Models\Log',
+        ],
+    ];
+
+    /**
      * Touch the executed_at timestamp
      *
      * @return boolean
      */
     public function execute()
     {
-        $this->executed_at = Carbon::now();
-        chdir($this->directory);
+        // Execute the hook
+        if (!empty($this->directory)) {
+            chdir($this->directory);
+        }
         $output = `$this->script`;
+
+        // Log the output
+        $this->logs()->save(new Log([
+            'hook_id' => $this->id,
+            'output' => $output,
+        ]));
+
+        // Return the results
+        $this->executed_at = Carbon::now();
         return $this->save();
     }
 
+    /**
+     * Left joins the logs count
+     *
+     * @param  \October\Rain\Database\Builder   $query
+     * @return \October\Rain\Database\Builder
+     */
+    public function scopeJoinLogsCount($query)
+    {
+        $subquery = Log::select(DB::raw('id, hook_id, COUNT(*) as logs_count'))
+            ->groupBy('hook_id')
+            ->getQuery()
+            ->toSql();
+
+        return $query
+            ->select('logs.logs_count')
+            ->leftJoin(DB::raw('(' . $subquery . ') logs'), 'bedard_webhooks_hooks.id', '=', 'logs.hook_id');
+    }
+
+    public function getLogsCountAttribute()
+    {
+        return (int) $this->attributes['logs_count'];
+    }
+
+    public function getUrlAttribute()
+    {
+        return url('bedard/webhooks', [ 'token' => $this->token ]);
+    }
 }
