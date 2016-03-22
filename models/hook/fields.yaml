@@ -1,0 +1,28 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: bedard.webhooks::lang.hooks.form.name_label
+        span: left
+        placeholder: bedard.webhooks::lang.hooks.form.name_placeholder
+
+    directory:
+        label: bedard.webhooks::lang.hooks.form.directory_label
+        span: right
+        placeholder: bedard.webhooks::lang.hooks.form.directory_placeholder
+
+    toolbar:
+        type: partial
+        path: hooks_toolbar
+        cssClass: collapse-visible
+
+secondaryTabs:
+    stretch: true
+    fields:
+        script:
+            tab: bedard.webhooks::lang.hooks.tabs.script
+            stretch: true
+            type: codeeditor
+            margin: 20

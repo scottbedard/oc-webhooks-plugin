@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: bedard.webhooks::lang.hooks.model
+
+# Model Form Field configuration
+form: $/bedard/webhooks/models/hook/fields.yaml
+
+# Model Class name
+modelClass: Bedard\Webhooks\Models\Hook
+
+# Default redirect location
+defaultRedirect: bedard/webhooks/hooks
+
+# Create page
+create:
+    title: backend::lang.relation.create_name
+    redirect: bedard/webhooks/hooks/update/:id
+    redirectClose: bedard/webhooks/hooks
+
+# Update page
+update:
+    title: backend::lang.relation.update_name
+    redirect: bedard/webhooks/hooks
+    redirectClose: bedard/webhooks/hooks
+
+# Preview page
+preview:
+    title: backend::lang.relations.preview_name

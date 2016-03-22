@@ -1,0 +1,28 @@
+<?php if (!$this->fatalError): ?>
+    <div class="bedard-shop-form">
+        <div class="layout fancy-layout padded">
+            <?= Form::open([
+                'class' => 'layout',
+                'id' => 'hooks-form',
+                'data-change-monitor' => 'true',
+                'data-window-close-confirm' => e(trans('backend::lang.form.confirm_tab_close')),
+            ]) ?>
+                <?= $this->formRender() ?>
+            <?= Form::close() ?>
+        </div>
+    </div>
+<?php else: ?>
+    <div class="control-breadcrumb">
+        <?= Block::placeholder('breadcrumb') ?>
+    </div>
+    <div class="padded-container">
+        <p class="flash-message static error"><?= e(trans($this->fatalError)) ?></p>
+        <p>
+            <a href="<?= Backend::url('bedard/webhooks/hooks') ?>" class="btn btn-default">
+                <?= e(trans('bedard.shop::lang.form.return_to_list', [
+                    'resource' => e(trans('bedard.webhooks::lang.hooks.model')),
+                ])) ?>
+            </a>
+        </p>
+    </div>
+<?php endif ?>
