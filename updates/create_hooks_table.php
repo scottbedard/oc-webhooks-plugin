@@ -16,6 +16,8 @@ class CreateHooksTable extends Migration
             $table->string('name');
             $table->string('directory');
             $table->text('script');
+            $table->string('executed_by');
+            $table->datetime('executed_at');
             $table->timestamps();
         });
     }

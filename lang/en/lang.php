@@ -17,6 +17,11 @@ return [
         'controller' => 'Web Hooks',
         'list_title' => 'Manage Web Hooks',
         'model' => 'Hook',
+        'columns' => [
+            'name' => 'Name',
+            'directory' => 'Directory',
+            'executed_at' => 'Last executed',
+        ],
         'form' => [
             'directory_label' => 'Execute from directory',
             'directory_placeholder' => '~',
@@ -26,5 +31,14 @@ return [
         'tabs' => [
             'script' => 'Script',
         ],
+    ],
+
+    //
+    // Responses
+    //
+    'responses' => [
+        'ok' => 'OK',
+        'failed' => 'FAILED',
+        '404' => 'No such webhook.',
     ],
 ];

@@ -21,6 +21,11 @@ fields:
 secondaryTabs:
     stretch: true
     fields:
+
+        token:
+            tab: bedard.webhooks::lang.hooks.tabs.script
+            disabled: true
+
         script:
             tab: bedard.webhooks::lang.hooks.tabs.script
             stretch: true

@@ -3,6 +3,17 @@
 # ===================================
 
 columns:
-    id:
-        label: ID
-        searchable: true
+    name:
+        label: bedard.webhooks::lang.hooks.columns.name
+
+    directory:
+        label: bedard.webhooks::lang.hooks.columns.directory
+
+    url:
+        label: bedard.webhooks::lang.hooks.columns.url
+        type: partial
+        path: $/bedard/webhooks/models/hook/_url.htm
+
+    executed_at:
+        label: bedard.webhooks::lang.hooks.columns.executed_at
+        type: datetime
