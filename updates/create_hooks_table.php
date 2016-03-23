@@ -13,12 +13,12 @@ class CreateHooksTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('token', 40)->unique();
-            $table->string('name');
-            $table->string('directory');
-            $table->text('script');
-            $table->string('http_method', 10);
-            $table->string('executed_by');
-            $table->datetime('executed_at');
+            $table->string('name')->nullable();
+            $table->string('directory')->nullable();
+            $table->text('script')->nullable();
+            $table->string('http_method', 10)->nullable();
+            $table->string('executed_by')->nullable();
+            $table->datetime('executed_at')->nullable();
             $table->timestamps();
         });
     }

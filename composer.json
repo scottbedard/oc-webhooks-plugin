@@ -1,0 +1,24 @@
+{
+    "name": "bedard/webhooks",
+    "description": "Integrate October applications with external services.",
+    "homepage": "https://github.com/scottbedard/oc-webhooks-plugin",
+    "keywords": ["octobercms"],
+    "authors": [
+        {
+            "name": "Scott Bedard",
+            "email": "scott@scottbedard.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Bedard\\Webhooks\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.8.*@dev",
+        "satooshi/php-coveralls": "~1.0"
+    },
+    "require": {
+        "php": ">=5.4.0"
+    }
+}

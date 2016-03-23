@@ -25,7 +25,12 @@ class Hook extends Model
     /**
      * @var array Fillable fields
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'name',
+        'directory',
+        'script',
+        'http_method',
+    ];
 
     /**
      * @var array Datetime fields
