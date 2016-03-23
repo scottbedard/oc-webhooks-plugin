@@ -11,6 +11,14 @@ return [
     ],
 
     //
+    // Safe mode
+    //
+    'safe_mode' => [
+        'header' => 'Safe Mode Conflict',
+        'content' => 'PHP does not allow the use of shell_exec() while in safe mode. If you wish to use this plugin, safe mode must be disabled.',
+    ],
+
+    //
     // Hooks
     //
     'hooks' => [
