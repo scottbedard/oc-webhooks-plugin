@@ -33,4 +33,19 @@ class HookTest extends PluginTestCase
         $this->assertEquals(0, Hook::joinLogsCount()->find($dummy1->id)->logsCount);
         $this->assertEquals(1, Hook::joinLogsCount()->find($dummy2->id)->logsCount);
     }
+
+    public function test_executing_a_script_with_or_without_a_directory()
+    {
+        $dummy1 = Hook::create(['script' => 'echo 1', 'directory' => '']);
+        $dummy2 = Hook::create(['script' => 'echo 1', 'directory' => '/']);
+        $this->assertTrue($dummy1->execute());
+        $this->assertTrue($dummy2->execute());
+    }
+
+    public function test_http_accessors()
+    {
+        $hook = Hook::create(['http_method' => 'GET']);
+        $this->assertEquals('GET', $hook->httpMethod);
+        $this->assertTrue(preg_match('/(.*)\/bedard\/webhooks\/(\w{40})/', $hook->url) === 1);
+    }
 }
