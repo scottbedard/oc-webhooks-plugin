@@ -17,10 +17,11 @@ class HookTest extends PluginTestCase
     public function test_executing_a_script_and_logging_the_output()
     {
         $hook = Hook::create(['script' => 'echo 12345']);
+        $this->assertNull($hook->executed_at);
         $hook->execute();
 
         $log = Log::whereHookId($hook->id)->first();
-        $this->assertEquals($hook->executed_at, Carbon::now());
+        $this->assertNotNull($hook->executed_at);
         $this->assertEquals(12345, $log->output);
     }
 
