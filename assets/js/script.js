@@ -20,18 +20,19 @@
     UrlColumn.prototype.onClicked = function (e) {
         e.preventDefault();
         e.stopPropagation();
-        this.copyToClipboard(e);
+
+        var url = $(e.currentTarget).closest('tr').find('a[data-url]').data('url');
+        this.copyToClipboard(url);
         this.flashSuccessMessage();
     };
 
     /**
-     * Copy the webhook to the user's clipboard
+     * Copy the webhook URL to the user's clipboard
      *
-     * @param  {Object} e
+     * @param  {String} url
      * @return {void}
      */
-    UrlColumn.prototype.copyToClipboard = function (e) {
-        var url = $(e.currentTarget).closest('tr').find('a[data-url]').data('url');
+    UrlColumn.prototype.copyToClipboard = function (url) {
         var $input = $("<input>");
         $("body").append($input);
         $input.val(url).select();
