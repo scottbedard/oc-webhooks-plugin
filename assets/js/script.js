@@ -7,7 +7,6 @@
      * @return {void}
      */
     var UrlColumn = function ($el) {
-        this.url = $el.find('a').data('url');
         this.lang = $el.closest('.bedard-webhooks.list').data('lang');
         $el.on('click', this.onClicked.bind(this));
     };
@@ -21,19 +20,21 @@
     UrlColumn.prototype.onClicked = function (e) {
         e.preventDefault();
         e.stopPropagation();
-        this.copyToClipboard();
+        this.copyToClipboard(e);
         this.flashSuccessMessage();
     };
 
     /**
      * Copy the webhook to the user's clipboard
      *
+     * @param  {Object} e
      * @return {void}
      */
-    UrlColumn.prototype.copyToClipboard = function () {
+    UrlColumn.prototype.copyToClipboard = function (e) {
+        var url = $(e.currentTarget).closest('tr').find('a[data-url]').data('url');
         var $input = $("<input>");
         $("body").append($input);
-        $input.val(this.url).select();
+        $input.val(url).select();
         document.execCommand("copy");
         $input.remove();
     };
