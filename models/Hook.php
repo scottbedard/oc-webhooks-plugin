@@ -106,6 +106,11 @@ class Hook extends Model
             ->leftJoin(DB::raw('(' . $subquery . ') logs'), 'bedard_webhooks_hooks.id', '=', 'logs.hook_id');
     }
 
+    /**
+     * Helper for snake_case http method
+     *
+     * @return string
+     */
     public function getHttpMethodAttribute()
     {
         return $this->attributes['http_method'];
