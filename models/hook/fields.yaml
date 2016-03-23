@@ -36,3 +36,8 @@ secondaryTabs:
                 POST: bedard.webhooks::lang.hooks.form.http_method_post
                 GET: bedard.webhooks::lang.hooks.form.http_method_get
             default: POST
+
+        logs:
+            tab: bedard.webhooks::lang.hooks.tabs.logs
+            type: partial
+            path: $/bedard/webhooks/models/hook/_logs.htm

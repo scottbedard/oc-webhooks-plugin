@@ -1,0 +1,13 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+logs:
+    label: bedard.webhooks::lang.logs.controller
+    emptyMessage: bedard.webhooks::lang.logs.empty_message
+    view:
+        list: $/bedard/webhooks/models/log/columns.yaml
+        toolbarButtons: delete
+    manage:
+        list: $/bedard/webhooks/models/log/columns.yaml
+        form: $/bedard/webhooks/models/log/fields.yaml

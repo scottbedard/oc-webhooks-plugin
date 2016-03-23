@@ -1,0 +1,17 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    created_at:
+        label: bedard.webhooks::lang.logs.form.created_at
+        type: datepicker
+        disabled: true
+
+    output:
+        label: bedard.webhooks::lang.logs.form.output
+        type: codeeditor
+        readOnly: true
+        size: huge
+        language: bash
+        margin: 10

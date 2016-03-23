@@ -43,8 +43,26 @@ return [
             'name_placeholder' => 'Enter a name...',
         ],
         'tabs' => [
+            'logs' => 'Logs',
             'script' => 'Script',
             'settings' => 'Settings',
+        ],
+    ],
+
+    //
+    // Logs
+    //
+    'logs' => [
+        'controller' => 'Logs',
+        'model' => 'Log',
+        'empty_message' => 'This webhook has never been hit.',
+        'form' => [
+            'created_at' => 'Date executed',
+            'output' => 'Output',
+        ],
+        'columns' => [
+            'id' => 'ID',
+            'created_at' => 'Date executed',
         ],
     ],
 
