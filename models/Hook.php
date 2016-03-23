@@ -113,7 +113,9 @@ class Hook extends Model
      */
     public function getHttpMethodAttribute()
     {
-        return $this->attributes['http_method'];
+        return array_key_exists('http_method', $this->attributes)
+            ? $this->attributes['http_method']
+            : 'post';
     }
 
     /**
@@ -123,7 +125,9 @@ class Hook extends Model
      */
     public function getLogsCountAttribute()
     {
-        return (int) $this->attributes['logs_count'];
+        return array_key_exists('logs_count', $this->attributes)
+            ? (int) $this->attributes['logs_count']
+            : 0;
     }
 
     /**
