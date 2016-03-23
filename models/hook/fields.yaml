@@ -26,6 +26,7 @@ secondaryTabs:
             stretch: true
             type: codeeditor
             margin: 20
+            language: bash
 
         http_method:
             tab: bedard.webhooks::lang.hooks.tabs.settings
