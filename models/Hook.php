@@ -74,7 +74,7 @@ class Hook extends Model
             chdir($this->directory);
         }
 
-        $output = `$this->script`;
+        $output = shell_exec($this->script);
 
         // Log the output
         Log::create([
