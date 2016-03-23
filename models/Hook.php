@@ -116,11 +116,21 @@ class Hook extends Model
         return $this->attributes['http_method'];
     }
 
+    /**
+     * Count the number of logs this hook has
+     *
+     * @return integer
+     */
     public function getLogsCountAttribute()
     {
         return (int) $this->attributes['logs_count'];
     }
 
+    /**
+     * Returns a url to this webhook
+     *
+     * @return string
+     */
     public function getUrlAttribute()
     {
         return url('bedard/webhooks', [ 'token' => $this->token ]);

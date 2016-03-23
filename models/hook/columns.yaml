@@ -8,7 +8,7 @@ columns:
 
     executed_at:
         label: bedard.webhooks::lang.hooks.columns.executed_at
-        type: datetime
+        type: timesince
 
     logs_count:
         label: bedard.webhooks::lang.hooks.columns.logs_count
