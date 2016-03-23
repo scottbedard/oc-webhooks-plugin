@@ -21,13 +21,17 @@ fields:
 secondaryTabs:
     stretch: true
     fields:
-
-        token:
-            tab: bedard.webhooks::lang.hooks.tabs.script
-            disabled: true
-
         script:
             tab: bedard.webhooks::lang.hooks.tabs.script
             stretch: true
             type: codeeditor
             margin: 20
+
+        http_method:
+            tab: bedard.webhooks::lang.hooks.tabs.settings
+            label: bedard.webhooks::lang.hooks.form.http_method
+            type: dropdown
+            options:
+                POST: bedard.webhooks::lang.hooks.form.http_method_post
+                GET: bedard.webhooks::lang.hooks.form.http_method_get
+            default: POST

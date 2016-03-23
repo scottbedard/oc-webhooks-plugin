@@ -1,8 +1,18 @@
-.bedard-webhooks td.url-column:hover {
+/*
+ * Lists
+ */
+.bedard-webhooks.list td.url-column:hover {
     cursor: pointer;
     text-decoration: underline;
 }
 
-.bedard-webhooks td.url-column i.icon-clipboard {
+.bedard-webhooks.list td.url-column i.icon-clipboard {
     padding-right: 4px;
+}
+
+/*
+ * Forms
+ */
+.bedard-webhooks.form .tab-pane:not(:first-of-type) {
+    padding: 20px 20px 0 20px !important;
 }

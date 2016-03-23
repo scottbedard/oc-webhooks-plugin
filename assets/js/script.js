@@ -1,5 +1,11 @@
 +function ($) { "use strict";
 
+    /**
+     * Constructor
+     *
+     * @param  {Object} $el
+     * @return {void}
+     */
     var UrlColumn = function ($el) {
         this.url = $el.find('a').data('url');
         this.lang = $el.closest('.bedard-webhooks.list').data('lang');

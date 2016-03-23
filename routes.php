@@ -1,2 +1,3 @@
 <?php
-Route::get('bedard/webhooks/{id}', 'Bedard\Webhooks\Http\WebhooksController@execute');
+
+Route::any('bedard/webhooks/{token}', 'Bedard\Webhooks\Http\WebhooksController@execute');

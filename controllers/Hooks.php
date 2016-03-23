@@ -22,6 +22,8 @@ class Hooks extends Controller
     public function __construct()
     {
         parent::__construct();
+
+        $this->useAssets();
         BackendMenu::setContext('October.System', 'system', 'users');
         SettingsManager::setContext('Bedard.Webhooks', 'webhooks');
     }
@@ -38,18 +40,6 @@ class Hooks extends Controller
     }
 
     /**
-     * Index
-     *
-     * @param  integer|null     $userId
-     * @return void
-     */
-    public function index($userId = null)
-    {
-        $this->useAssets();
-        $this->asExtension('ListController')->index();
-    }
-
-    /**
      * Join a subquery counting the logs.
      *
      * @param  \Illuminate\Database\Query\Builder $query
@@ -57,6 +47,6 @@ class Hooks extends Controller
      */
     public function listExtendQuery($query)
     {
-        $query->joinLogsCount()->select('bedard_webhooks_hooks.*', 'logs.logs_count');
+        $query->joinLogsCount();
     }
 }

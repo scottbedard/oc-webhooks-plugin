@@ -13,7 +13,7 @@ class CreateLogsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('hook_id')->unsigned()->index();
-            $table->text('output');
+            $table->text('output')->nullable();
             $table->text('referrer');
             $table->integer('status_code');
             $table->timestamps();

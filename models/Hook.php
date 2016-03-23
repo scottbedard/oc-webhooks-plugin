@@ -58,7 +58,7 @@ class Hook extends Model
     ];
 
     /**
-     * Touch the executed_at timestamp
+     * Execute the script and log the output
      *
      * @return boolean
      */
@@ -68,13 +68,14 @@ class Hook extends Model
         if (!empty($this->directory)) {
             chdir($this->directory);
         }
+
         $output = `$this->script`;
 
         // Log the output
-        $this->logs()->save(new Log([
+        Log::create([
             'hook_id' => $this->id,
             'output' => $output,
-        ]));
+        ]);
 
         // Return the results
         $this->executed_at = Carbon::now();
@@ -95,8 +96,14 @@ class Hook extends Model
             ->toSql();
 
         return $query
-            ->select('logs.logs_count')
+            ->addSelect('bedard_webhooks_hooks.*')
+            ->addSelect('logs.logs_count')
             ->leftJoin(DB::raw('(' . $subquery . ') logs'), 'bedard_webhooks_hooks.id', '=', 'logs.hook_id');
+    }
+
+    public function getHttpMethodAttribute()
+    {
+        return $this->attributes['http_method'];
     }
 
     public function getLogsCountAttribute()

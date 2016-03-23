@@ -26,13 +26,17 @@ return [
             'url' => 'URL',
         ],
         'form' => [
-            'directory_label' => 'Execute from directory',
-            'directory_placeholder' => '~',
+            'directory_label' => 'Directory',
+            'directory_placeholder' => 'Execution directory...',
+            'http_method' => 'HTTP Method',
+            'http_method_get' => 'Get',
+            'http_method_post' => 'Post',
             'name_label' => 'Name',
             'name_placeholder' => 'Enter a name...',
         ],
         'tabs' => [
             'script' => 'Script',
+            'settings' => 'Settings',
         ],
     ],
 
@@ -40,8 +44,8 @@ return [
     // Responses
     //
     'responses' => [
-        'ok' => 'OK',
-        'failed' => 'FAILED',
-        '404' => 'No such webhook.',
+        'success' => 'Success',
+        'failed' => 'Failed to execute web hook script.',
+        'not_found' => 'Web hook not found.',
     ],
 ];
