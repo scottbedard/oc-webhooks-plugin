@@ -159,7 +159,7 @@ class Hook extends Model
     public function getSingleLineScriptAttribute()
     {
         $delimeter = ' && ';
-        return implode($delimeter, explode(PHP_EOL, $this->script));
+        return implode($delimeter, explode("\n", $this->script));
     }
 
     /**
