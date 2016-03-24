@@ -158,8 +158,7 @@ class Hook extends Model
      */
     public function getSingleLineScriptAttribute()
     {
-        $delimeter = ' && ';
-        return implode($delimeter, explode("\n", $this->script));
+        return trim(preg_replace("/[\n]+/", " && ", $this->script));
     }
 
     /**

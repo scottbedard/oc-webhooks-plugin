@@ -66,4 +66,21 @@ class HookTest extends PluginTestCase
         $this->setExpectedException('Bedard\Webhooks\Exceptions\ScriptDisabledException');
         $hook->execute();
     }
+
+    public function test_multiline_scripts_are_compressed_to_a_single_line()
+    {
+        $hook1 = $this->newHook(['script' =>
+"echo hello
+echo world"
+        ]);
+
+        $hook2 = $this->newHook(['script' =>
+"echo foo
+
+echo bar"
+        ]);
+
+        $this->assertEquals('echo hello && echo world', $hook1->singleLineScript);
+        $this->assertEquals('echo foo && echo bar', $hook2->singleLineScript);
+    }
 }
