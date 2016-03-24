@@ -3,15 +3,22 @@
 # ===================================
 
 fields:
-    name:
-        label: bedard.webhooks::lang.hooks.form.name_label
-        span: left
-        placeholder: bedard.webhooks::lang.hooks.form.name_placeholder
 
-    # directory:
-    #     label: bedard.webhooks::lang.hooks.form.directory_label
-    #     span: right
-    #     placeholder: bedard.webhooks::lang.hooks.form.directory_placeholder
+    name@create:
+        label: bedard.webhooks::lang.hooks.form.name_label
+        placeholder: bedard.webhooks::lang.hooks.form.name_placeholder
+        span: full
+
+    name@update:
+        label: bedard.webhooks::lang.hooks.form.name_label
+        placeholder: bedard.webhooks::lang.hooks.form.name_placeholder
+        span: left
+
+    token@update:
+        label: bedard.webhooks::lang.hooks.form.token
+        path: $/bedard/webhooks/models/hook/_token_field.htm
+        type: partial
+        span: right
 
     toolbar:
         type: partial

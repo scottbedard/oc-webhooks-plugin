@@ -46,6 +46,7 @@ return [
             'name_label' => 'Name',
             'name_placeholder' => 'Enter a name...',
             'status' => 'Status',
+            'token' => 'Token',
         ],
         'tabs' => [
             'logs' => 'Logs',
