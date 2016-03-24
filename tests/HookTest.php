@@ -37,7 +37,6 @@ class HookTest extends PluginTestCase
         $hook->execute();
 
         $log = Log::whereHookId($hook->id)->first();
-        $this->assertNotNull($hook->executed_at);
         $this->assertEquals(12345, $log->output);
     }
 

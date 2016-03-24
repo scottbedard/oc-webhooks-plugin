@@ -2,6 +2,7 @@
 
 use DB;
 use Model;
+use Queue;
 use Backend;
 use Carbon\Carbon;
 use Bedard\Webhooks\Models\Log;
@@ -75,15 +76,13 @@ class Hook extends Model
             throw new ScriptDisabledException();
         }
 
-        $output = shell_exec($this->script);
-
-        // Log the output
-        Log::create([
-            'hook_id' => $this->id,
-            'output' => $output,
-        ]);
-
-        return $this->touchExecutedAt();
+        $id = $this->id;
+        Queue::push(function($job) use ($id) {
+            $hook = Hook::find($id);
+            $output = shell_exec($hook->script);
+            $hook->logOutput($output);
+            $hook->touchExecutedAt();
+        });
     }
 
     /**
@@ -161,6 +160,14 @@ class Hook extends Model
     public function getUrlAttribute()
     {
         return url('bedard/webhooks', [ 'token' => $this->token ]);
+    }
+
+    public function logOutput($output)
+    {
+        return Log::create([
+            'hook_id' => $this->id,
+            'output' => $output,
+        ]);
     }
 
     /**
