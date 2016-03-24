@@ -9,6 +9,28 @@
     }
 
     //
+    // Execute button
+    //
+    td.execute-btn a {
+        text-align: center;
+        transition: background-color 0.2s;
+        width: 100%;
+    }
+
+    //
+    // Execute button
+    //
+    td.execute-btn {
+        position: relative;
+
+        a {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    //
     // Icons
     //
     i.icon {

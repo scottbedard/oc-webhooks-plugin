@@ -26,6 +26,10 @@ return [
         'copied_to_clipboard' => 'Copied webhook to clipboard!',
         'disable' => 'Disable',
         'enable' => 'Enable',
+        'execute' => 'Execute',
+        'execute_running' => 'Executing...',
+        'execute_success' => 'Successfully executed webhook.',
+        'execute_failed' => 'Failed to execute webhook.',
         'list_title' => 'Manage Web Hooks',
         'model' => 'Hook',
         'status_enabled' => 'Enabled',
@@ -38,6 +42,7 @@ return [
             'logs_count' => 'Logs',
             'url' => 'URL',
             'status' => 'Status',
+            'execute_btn' => 'Test webhook',
         ],
         'form' => [
             'http_method' => 'HTTP Method',

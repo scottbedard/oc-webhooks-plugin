@@ -3,6 +3,7 @@
 use Lang;
 use Flash;
 use Backend;
+use Exception;
 use BackendMenu;
 use Backend\Classes\Controller;
 use Bedard\Webhooks\Models\Hook;
@@ -54,6 +55,18 @@ class Hooks extends Controller
     public function listExtendQuery($query)
     {
         $query->joinLogsCount();
+    }
+
+    public function onExecute()
+    {
+        try {
+            Hook::find(post('id'))->execute();
+            Flash::success(Lang::get('bedard.webhooks::lang.hooks.execute_success'));
+        } catch (Exception $e) {
+            Flash::error(Lang::get('bedard.webhooks::lang.hooks.execute_failed'));
+        }
+
+        return $this->listRefresh();
     }
 
     public function onEnable()

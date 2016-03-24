@@ -25,3 +25,11 @@ columns:
         label: bedard.webhooks::lang.hooks.columns.status
         type: partial
         path: $/bedard/webhooks/models/hook/_status.htm
+
+    execute_btn:
+        cssClass: execute-btn
+        label: bedard.webhooks::lang.hooks.columns.execute_btn
+        type: partial
+        path: $/bedard/webhooks/models/hook/_execute.htm
+        sortable: false
+        clickable: false
