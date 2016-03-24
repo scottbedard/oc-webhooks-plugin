@@ -1,11 +1,39 @@
 <div data-control="toolbar">
-    <a
-        href="<?= Backend::url('bedard/webhooks/hooks/create') ?>"
-        class="btn btn-primary oc-icon-plus">
-        <?= e(trans('backend::lang.form.create_title', [
-            'name' => trans('bedard.webhooks::lang.hooks.model'),
-        ])) ?>
-    </a>
+        <a
+            href="<?= Backend::url('bedard/webhooks/hooks/create') ?>"
+            class="btn btn-primary oc-icon-plus">
+            <?= e(trans('backend::lang.form.create_title', [
+                'name' => trans('bedard.webhooks::lang.hooks.model'),
+            ])) ?>
+        </a>
+
+    <div class="btn-group" role="group" aria-label="Enable or disable">
+        <button
+            class="btn btn-default oc-icon-check"
+            disabled="disabled"
+            onclick="$(this).data('request-data', { checked: $('.control-list').listWidget('getChecked') })"
+            data-request="onEnable"
+            data-trigger-action="enable"
+            data-trigger=".control-list input[type=checkbox]"
+            data-trigger-condition="checked"
+            data-request-success="$(this).prop('disabled', false)"
+            data-stripe-load-indicator>
+            <?= e(trans('bedard.webhooks::lang.hooks.enable')) ?>
+        </button>
+
+        <button
+            class="btn btn-default oc-icon-times"
+            disabled="disabled"
+            onclick="$(this).data('request-data', { checked: $('.control-list').listWidget('getChecked') })"
+            data-request="onDisable"
+            data-trigger-action="enable"
+            data-trigger=".control-list input[type=checkbox]"
+            data-trigger-condition="checked"
+            data-request-success="$(this).prop('disabled', false)"
+            data-stripe-load-indicator>
+            <?= e(trans('bedard.webhooks::lang.hooks.disable')) ?>
+        </button>
+    </div>
 
     <button
         class="btn btn-default oc-icon-trash-o"
@@ -19,32 +47,6 @@
         data-request-success="$(this).prop('disabled', false)"
         data-stripe-load-indicator>
         <?= e(trans('backend::lang.list.delete_selected')) ?>
-    </button>
-
-    <button
-        class="btn btn-default oc-icon-check"
-        disabled="disabled"
-        onclick="$(this).data('request-data', { checked: $('.control-list').listWidget('getChecked') })"
-        data-request="onEnable"
-        data-trigger-action="enable"
-        data-trigger=".control-list input[type=checkbox]"
-        data-trigger-condition="checked"
-        data-request-success="$(this).prop('disabled', false)"
-        data-stripe-load-indicator>
-        <?= e(trans('bedard.webhooks::lang.hooks.enable')) ?>
-    </button>
-
-    <button
-        class="btn btn-default oc-icon-times"
-        disabled="disabled"
-        onclick="$(this).data('request-data', { checked: $('.control-list').listWidget('getChecked') })"
-        data-request="onDisable"
-        data-trigger-action="enable"
-        data-trigger=".control-list input[type=checkbox]"
-        data-trigger-condition="checked"
-        data-request-success="$(this).prop('disabled', false)"
-        data-stripe-load-indicator>
-        <?= e(trans('bedard.webhooks::lang.hooks.disable')) ?>
     </button>
 
 </div>

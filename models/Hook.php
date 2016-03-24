@@ -162,6 +162,12 @@ class Hook extends Model
         return url('bedard/webhooks', [ 'token' => $this->token ]);
     }
 
+    /**
+     * Log some output
+     *
+     * @param  string   $output
+     * @return \Bedard\Webhooks\Models\Log
+     */
     public function logOutput($output)
     {
         return Log::create([

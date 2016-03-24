@@ -29,7 +29,9 @@ return [
         'list_title' => 'Manage Web Hooks',
         'model' => 'Hook',
         'status_enabled' => 'Enabled',
+        'status_enabled_msg' => 'Successfully enabled the selected webhooks.',
         'status_disabled' => 'Disabled',
+        'status_disabled_msg' => 'Successfully enabled the selected webhooks.',
         'columns' => [
             'name' => 'Name',
             'directory' => 'Directory',
@@ -46,6 +48,7 @@ return [
             'http_method_post' => 'Post',
             'name_label' => 'Name',
             'name_placeholder' => 'Enter a name...',
+            'status' => 'Status',
         ],
         'tabs' => [
             'logs' => 'Logs',

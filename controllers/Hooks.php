@@ -1,5 +1,7 @@
 <?php namespace Bedard\Webhooks\Controllers;
 
+use Lang;
+use Flash;
 use Backend;
 use BackendMenu;
 use Backend\Classes\Controller;
@@ -57,10 +59,14 @@ class Hooks extends Controller
     public function onEnable()
     {
         Hook::whereIn('id', post('checked'))->enable();
+        Flash::success(Lang::get('bedard.webhooks::lang.hooks.status_enabled_msg'));
+        return $this->listRefresh();
     }
 
     public function onDisable()
     {
         Hook::whereIn('id', post('checked'))->disable();
+        Flash::success(Lang::get('bedard.webhooks::lang.hooks.status_disabled_msg'));
+        return $this->listRefresh();
     }
 }

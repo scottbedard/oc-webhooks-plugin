@@ -37,6 +37,12 @@ secondaryTabs:
                 GET: bedard.webhooks::lang.hooks.form.http_method_get
             default: POST
 
+        is_enabled:
+            tab: bedard.webhooks::lang.hooks.tabs.settings
+            label: bedard.webhooks::lang.hooks.form.status
+            type: switch
+            default: true
+
         logs:
             tab: bedard.webhooks::lang.hooks.tabs.logs
             type: partial
