@@ -78,7 +78,7 @@ class Hook extends Model
         $id = $this->id;
         Queue::push(function($job) use ($id) {
             $hook = Hook::find($id);
-            $output = shell_exec($hook->script);
+            $output = shell_exec($hook->singleLineScript);
             $hook->logOutput($output);
             $hook->touchExecutedAt();
         });
@@ -149,6 +149,17 @@ class Hook extends Model
         return array_key_exists('logs_count', $this->attributes)
             ? (int) $this->attributes['logs_count']
             : 0;
+    }
+
+    /**
+     * Returns the shell script as a single line
+     *
+     * @return string
+     */
+    public function getSingleLineScriptAttribute()
+    {
+        $delimeter = ' && ';
+        return implode($delimeter, explode(PHP_EOL, $this->script));
     }
 
     /**
