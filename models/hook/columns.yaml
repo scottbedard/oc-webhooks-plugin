@@ -20,3 +20,8 @@ columns:
         type: partial
         path: $/bedard/webhooks/models/hook/_url.htm
         clickable: false
+
+    is_enabled:
+        label: bedard.webhooks::lang.hooks.columns.status
+        type: partial
+        path: $/bedard/webhooks/models/hook/_status.htm

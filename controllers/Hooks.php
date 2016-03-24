@@ -3,6 +3,7 @@
 use Backend;
 use BackendMenu;
 use Backend\Classes\Controller;
+use Bedard\Webhooks\Models\Hook;
 use System\Classes\SettingsManager;
 
 /**
@@ -13,6 +14,7 @@ class Hooks extends Controller
     public $implement = [
         'Backend.Behaviors.FormController',
         'Backend.Behaviors.ListController',
+        'Owl.Behaviors.ListDelete.Behavior',
         'Backend.Behaviors.RelationController',
     ];
 
@@ -50,5 +52,15 @@ class Hooks extends Controller
     public function listExtendQuery($query)
     {
         $query->joinLogsCount();
+    }
+
+    public function onEnable()
+    {
+        Hook::whereIn('id', post('checked'))->enable();
+    }
+
+    public function onDisable()
+    {
+        Hook::whereIn('id', post('checked'))->disable();
     }
 }

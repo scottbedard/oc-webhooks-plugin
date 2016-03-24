@@ -6,8 +6,17 @@
     text-decoration: underline;
 }
 
-.bedard-webhooks.list td.url-column i.icon-clipboard {
+.bedard-webhooks.list i.icon {
+    font-size: 14px;
     padding-right: 4px;
+}
+
+.bedard-webhooks.list i.icon-check {
+    color: #95B753;
+}
+
+.bedard-webhooks.list i.icon-times {
+    color: #CC3300;
 }
 
 .bedard-webhooks.list .callout i.icon-times {

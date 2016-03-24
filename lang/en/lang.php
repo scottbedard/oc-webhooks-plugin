@@ -24,14 +24,19 @@ return [
     'hooks' => [
         'controller' => 'Web Hooks',
         'copied_to_clipboard' => 'Copied webhook to clipboard!',
+        'disable' => 'Disable',
+        'enable' => 'Enable',
         'list_title' => 'Manage Web Hooks',
         'model' => 'Hook',
+        'status_enabled' => 'Enabled',
+        'status_disabled' => 'Disabled',
         'columns' => [
             'name' => 'Name',
             'directory' => 'Directory',
             'executed_at' => 'Last executed',
             'logs_count' => 'Logs',
             'url' => 'URL',
+            'status' => 'Status',
         ],
         'form' => [
             'directory_label' => 'Directory',

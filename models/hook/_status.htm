@@ -1,0 +1,7 @@
+<?php if ($record->is_enabled): ?>
+    <i class="icon icon-check"></i>
+    <span><?= e(trans('bedard.webhooks::lang.hooks.status_enabled')) ?></span>
+<?php else: ?>
+    <i class="icon icon-times"></i>
+    <span><?= e(trans('bedard.webhooks::lang.hooks.status_disabled')) ?></span>
+<?php endif ?>

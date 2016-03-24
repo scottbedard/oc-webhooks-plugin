@@ -12,6 +12,7 @@ class CreateHooksTable extends Migration
         {
             $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->boolean('is_enabled')->default(true);
             $table->string('token', 40)->unique();
             $table->string('name')->nullable();
             $table->string('directory')->nullable();

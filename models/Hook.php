@@ -5,6 +5,7 @@ use Model;
 use Backend;
 use Carbon\Carbon;
 use Bedard\Webhooks\Models\Log;
+use Bedard\Webhooks\Exceptions\ScriptDisabledException;
 
 /**
  * Hook Model
@@ -30,6 +31,7 @@ class Hook extends Model
         'directory',
         'script',
         'http_method',
+        'is_enabled',
     ];
 
     /**
@@ -69,9 +71,8 @@ class Hook extends Model
      */
     public function execute()
     {
-        // Execute the hook
-        if (!empty($this->directory)) {
-            chdir($this->directory);
+        if (!$this->is_enabled) {
+            throw new ScriptDisabledException();
         }
 
         $output = shell_exec($this->script);
@@ -82,9 +83,31 @@ class Hook extends Model
             'output' => $output,
         ]);
 
-        // Return the results
-        $this->executed_at = Carbon::now();
-        return $this->save();
+        return $this->touchExecutedAt();
+    }
+
+    /**
+     * Enables or disables webhooks
+     *
+     * @param  \October\Rain\Database\Builder   $query
+     * @return integer
+     */
+    public function scopeSetIsEnabled($query, $isEnabled)
+    {
+        return $query->update([
+            'is_enabled' => $isEnabled,
+            'updated_at' => Carbon::now(),
+        ]);
+    }
+
+    public function scopeDisable($query)
+    {
+        return $query->setIsEnabled(false);
+    }
+
+    public function scopeEnable($query)
+    {
+        return $query->setIsEnabled(true);
     }
 
     /**
@@ -138,5 +161,16 @@ class Hook extends Model
     public function getUrlAttribute()
     {
         return url('bedard/webhooks', [ 'token' => $this->token ]);
+    }
+
+    /**
+     * Touch the model's executed_at timestamp
+     *
+     * @return boolean
+     */
+    public function touchExecutedAt()
+    {
+        $this->executed_at = Carbon::now();
+        return $this->save();
     }
 }
