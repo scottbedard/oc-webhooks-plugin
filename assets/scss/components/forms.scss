@@ -1,0 +1,18 @@
+.bedard-webhooks.form {
+
+    //
+    // Secondary tabs
+    //
+    .tab-pane:not(:first-of-type) {
+        padding: 20px 20px 0 20px !important;
+    }
+
+    //
+    // Token field
+    //
+    .token-field {
+        color: #ffffff;
+        font-size: 24px;
+        font-weight: 100;
+    }
+}

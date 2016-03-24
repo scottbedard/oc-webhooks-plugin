@@ -41,8 +41,8 @@ class Hooks extends Controller
      */
     protected function useAssets()
     {
-        $this->addJs('/plugins/bedard/webhooks/assets/js/script.js');
-        $this->addCss('/plugins/bedard/webhooks/assets/css/style.css');
+        $this->addJs('/plugins/bedard/webhooks/assets/compiled/webhooks.min.js');
+        $this->addCss('/plugins/bedard/webhooks/assets/compiled/webhooks.min.css');
     }
 
     /**

@@ -1,0 +1,29 @@
+.bedard-webhooks.list {
+
+    //
+    // Url column
+    //
+    td.url-column:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    //
+    // Icons
+    //
+    i.icon {
+        font-size: 14px;
+        padding-right: 4px;
+
+        &.icon-check { color: #95B753 }
+        &.icon-times { color: #CC3300 }
+    }
+
+    //
+    // Safe mode callout
+    //
+    .callout {
+        padding: 0 20px;
+        i.icon-times { padding-right: 10px }
+    }
+}
