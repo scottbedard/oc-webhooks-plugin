@@ -1,11 +1,11 @@
 <div data-control="toolbar">
-        <a
-            href="<?= Backend::url('bedard/webhooks/hooks/create') ?>"
-            class="btn btn-primary oc-icon-plus">
-            <?= e(trans('backend::lang.form.create_title', [
-                'name' => trans('bedard.webhooks::lang.hooks.model'),
-            ])) ?>
-        </a>
+    <a
+        href="<?= Backend::url('bedard/webhooks/hooks/create') ?>"
+        class="btn btn-primary oc-icon-plus">
+        <?= e(trans('backend::lang.form.create_title', [
+            'name' => trans('bedard.webhooks::lang.hooks.model'),
+        ])) ?>
+    </a>
 
     <div class="btn-group" role="group" aria-label="Enable or disable">
         <button
@@ -48,5 +48,4 @@
         data-stripe-load-indicator>
         <?= e(trans('backend::lang.list.delete_selected')) ?>
     </button>
-
 </div>
