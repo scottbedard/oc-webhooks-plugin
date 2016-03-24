@@ -4,21 +4,10 @@
 
 fields:
 
-    name@create:
+    name:
         label: bedard.webhooks::lang.hooks.form.name_label
         placeholder: bedard.webhooks::lang.hooks.form.name_placeholder
         span: full
-
-    name@update:
-        label: bedard.webhooks::lang.hooks.form.name_label
-        placeholder: bedard.webhooks::lang.hooks.form.name_placeholder
-        span: left
-
-    token@update:
-        label: bedard.webhooks::lang.hooks.form.token
-        path: $/bedard/webhooks/models/hook/_token_field.htm
-        type: partial
-        span: right
 
     toolbar:
         type: partial
