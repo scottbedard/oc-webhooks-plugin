@@ -8,10 +8,10 @@ fields:
         span: left
         placeholder: bedard.webhooks::lang.hooks.form.name_placeholder
 
-    directory:
-        label: bedard.webhooks::lang.hooks.form.directory_label
-        span: right
-        placeholder: bedard.webhooks::lang.hooks.form.directory_placeholder
+    # directory:
+    #     label: bedard.webhooks::lang.hooks.form.directory_label
+    #     span: right
+    #     placeholder: bedard.webhooks::lang.hooks.form.directory_placeholder
 
     toolbar:
         type: partial

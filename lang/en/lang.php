@@ -34,15 +34,12 @@ return [
         'status_disabled_msg' => 'Successfully enabled the selected webhooks.',
         'columns' => [
             'name' => 'Name',
-            'directory' => 'Directory',
             'executed_at' => 'Last executed',
             'logs_count' => 'Logs',
             'url' => 'URL',
             'status' => 'Status',
         ],
         'form' => [
-            'directory_label' => 'Directory',
-            'directory_placeholder' => 'Execution directory...',
             'http_method' => 'HTTP Method',
             'http_method_get' => 'Get',
             'http_method_post' => 'Post',

@@ -15,7 +15,6 @@ class CreateHooksTable extends Migration
             $table->boolean('is_enabled')->default(true);
             $table->string('token', 40)->unique();
             $table->string('name')->nullable();
-            $table->string('directory')->nullable();
             $table->text('script')->nullable();
             $table->string('http_method', 10)->nullable();
             $table->string('executed_by')->nullable();

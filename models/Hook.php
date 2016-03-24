@@ -29,7 +29,6 @@ class Hook extends Model
      */
     protected $fillable = [
         'name',
-        'directory',
         'script',
         'http_method',
         'is_enabled',
