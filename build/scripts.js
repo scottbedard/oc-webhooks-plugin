@@ -1,5 +1,5 @@
 var gulp        = require('gulp');
-var babel       = require('babelify');
+var babelify    = require('babelify');
 var stringify   = require('stringify');
 var browserify  = require('browserify');
 var notify      = require('gulp-notify');
@@ -18,7 +18,7 @@ module.exports = function() {
             minify: true,
             minifier: { extensions: ['.htm'] },
         }))
-        .transform(babel)
+        .transform(babelify, {presets: ["es2015"]})
         .bundle()
         .on('error', notify.onError({
             title: "Compile Error",
@@ -27,7 +27,7 @@ module.exports = function() {
         .pipe(source('webhooks.min.js'))
         .pipe(buffer())
         .pipe(sourcemaps.init({ loadMaps: true }))
-        .pipe(uglify())
+        // .pipe(uglify())
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./assets/compiled'))
         .pipe(notify({ message: 'Javascript compiled!', onLast: true }));
