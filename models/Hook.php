@@ -158,7 +158,8 @@ class Hook extends Model
      */
     public function getSingleLineScriptAttribute()
     {
-        return str_replace("\n", " && ", $this->script);
+        $script = trim(preg_replace('/[\r\n]+/', " && ", $this->script));
+        return $script;
     }
 
     /**
