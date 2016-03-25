@@ -3,18 +3,22 @@
 [![Build Status](https://travis-ci.org/scottbedard/oc-webhooks-plugin.svg?branch=master)](https://travis-ci.org/scottbedard/oc-webhooks-plugin)
 [![Coverage Status](https://coveralls.io/repos/github/scottbedard/oc-webhooks-plugin/badge.svg?branch=master)](https://coveralls.io/github/scottbedard/oc-webhooks-plugin?branch=master)
 
-Write shell scripts that respond to webhooks.
+<a name="introduction"></a>
+### Introduction
+This plugin enables the creation of shell scripts that respond to a given route. Webhooks are particularly useful when it comes to integrating with third party services and triggering deployments.
 
-> *Warning:* This script runs raw shell statements. Use your head, don't let unauthorized users access your scripts.
+With that said, _use your head_. Don't expose your site to massive security problems by allowing malicious code into your scripts.
 
-#### GitHub "push to deploy" example
+<a name="github-push-to-deploy"></a>
+### GitHub "push to deploy" example
 
-One common use for this plugin is to set your plugins up to pull and update whenever you push to GitHub. To do this, create a simple webhook with the following script. You'll need to also provide a name and directory for your plugin.
+In this example, we'll walk through a basic "push to deploy" example. It is written for GitHub, but the process is roughly the same everywhere. In this example, we'll assume that you've already installed a plugin via GitHub, and have access to the repository settings.
+
+First things first, navigate to `/backend/bedard/webhooks/hooks` and create a new webhook. The script will be pretty simple for this, just `cd` into your plugin directory and pull.
 
 ```bash
-cd plugins/authorcode/pluginname
+cd plugins/bedard/webhooks
 git pull
-composer update
 ```
 
-To gain your webhook URL, click the `URL` column in the webhooks list. Finally, just instruct GitHub to [hit your webhook](https://developer.github.com/webhooks/creating) URL whenever a git push occurs.
+Next copy the webhook's URL by clicking on token value in the `URL` column. Now we can head over to our repository on github and instruct it to let us know about push events. To do this, click `Settings > Webhooks & Services > Add webhook`. Fill out the form, and we're done. Our plugin will now update itself whenever code is pushed.
