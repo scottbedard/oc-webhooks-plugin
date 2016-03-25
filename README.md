@@ -3,9 +3,7 @@
 [![Build Status](https://travis-ci.org/scottbedard/oc-webhooks-plugin.svg?branch=master)](https://travis-ci.org/scottbedard/oc-webhooks-plugin)
 [![Coverage Status](https://coveralls.io/repos/github/scottbedard/oc-webhooks-plugin/badge.svg?branch=master)](https://coveralls.io/github/scottbedard/oc-webhooks-plugin?branch=master)
 
-<a name="introduction"></a>
-### Introduction
-This plugin enables the creation of shell scripts that respond to a given route. Webhooks are particularly useful when it comes to integrating with third party services and triggering deployments.
+This plugin allows you to create shell scripts that respond to unique URLs. These scripts can be particularly useful for deploying your plugins and themes.
 
 With that said, _use your head_. Don't expose your site to massive security problems by allowing malicious code into your scripts.
 
