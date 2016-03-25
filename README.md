@@ -19,4 +19,4 @@ cd plugins/bedard/webhooks
 git pull
 ```
 
-Next copy the webhook's URL by clicking on token value in the `URL` column. Now we can head over to our repository on github and instruct it to let us know about push events. To do this, click `Settings > Webhooks & Services > Add webhook`. Fill out the form, and we're done. Our plugin will now update itself whenever code is pushed.
+Next copy the webhook's URL by clicking on token value in the `URL` column. Now we can head over to our repository on GitHub and instruct it to let us know about push events. To do this, click `Settings > Webhooks & Services > Add webhook`. Fill out the form, and we're done. Our plugin will now update itself whenever code is pushed.
