@@ -109,6 +109,21 @@ class Hook extends Model
     }
 
     /**
+     * Find a hook by token and HTTP method
+     *
+     * @param  \October\Rain\Database\Builder   $query
+     * @param  string                           $token
+     * @param  $httpMethod                      $httpMethod
+     * @return \October\Rain\Database\Builder
+     */
+    public function scopeFindByTokenAndMethod($query, $token, $httpMethod) {
+        return $query->whereIsEnabled(true)
+            ->whereHttpMethod($httpMethod)
+            ->whereToken($token)
+            ->firstOrFail();
+    }
+
+    /**
      * Enables or disables webhooks
      *
      * @param  \October\Rain\Database\Builder   $query
