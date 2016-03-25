@@ -36,9 +36,25 @@ class Plugin extends PluginBase
             'webhooks' => [
                 'label'       => 'bedard.webhooks::lang.plugin.name',
                 'description' => 'bedard.webhooks::lang.plugin.description',
-                'category'    => SettingsManager::CATEGORY_SYSTEM,
+                'category'    => 'bedard.webhooks::lang.plugin.name',
                 'icon'        => 'icon-code',
                 'url'         => Backend::url('bedard/webhooks/hooks'),
+                'permissions' => ['bedard.webhooks.manage_hooks'],
+            ],
+        ];
+    }
+
+    /**
+     * Returns plugin permissions
+     *
+     * @return array
+     */
+    public function registerPermissions()
+    {
+        return [
+            'bedard.webhooks.manage_hooks' => [
+                'tab' => 'bedard.webhooks::lang.permissions.tab',
+                'label' => 'bedard.webhooks::lang.permissions.manage_hooks',
             ],
         ];
     }

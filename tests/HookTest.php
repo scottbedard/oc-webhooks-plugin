@@ -1,4 +1,4 @@
-<?php namespace Bedard\Shop\Tests\Models;
+<?php namespace Bedard\Webhooks\Tests;
 
 use Exception;
 use Carbon\Carbon;

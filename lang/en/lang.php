@@ -6,7 +6,7 @@ return [
     // Plugin
     //
     'plugin' => [
-        'name' => 'Webhook',
+        'name' => 'Webhooks',
         'description' => 'Integrate your application with external services.',
     ],
 
@@ -84,5 +84,13 @@ return [
         'success' => 'Success',
         'failed' => 'Failed',
         'not_found' => 'Not found',
+    ],
+
+    //
+    // Permissions
+    //
+    'permissions' => [
+        'tab' => 'Webhooks',
+        'manage_hooks' => 'Manage webhooks',
     ],
 ];

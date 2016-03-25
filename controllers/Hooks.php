@@ -21,6 +21,8 @@ class Hooks extends Controller
         'Backend.Behaviors.RelationController',
     ];
 
+    public $requiredPermissions = ['bedard.webhooks.manage_hooks'];
+
     public $bodyClass = 'compact-container';
     public $formConfig = 'config_form.yaml';
     public $listConfig = 'config_list.yaml';
