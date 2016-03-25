@@ -59,13 +59,8 @@ class Hooks extends Controller
 
     public function onExecute()
     {
-        try {
-            Hook::find(post('id'))->execute();
-            Flash::success(Lang::get('bedard.webhooks::lang.hooks.execute_success'));
-        } catch (Exception $e) {
-            Flash::error(Lang::get('bedard.webhooks::lang.hooks.execute_failed'));
-        }
-
+        Hook::findOrFail(post('id'))->executeScript();
+        Flash::success(Lang::get('bedard.webhooks::lang.hooks.execute_success'));
         return $this->listRefresh();
     }
 

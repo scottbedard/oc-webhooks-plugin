@@ -99,16 +99,6 @@ class Hook extends Model
     }
 
     /**
-     * Returns the file path of our hook's shell script
-     *
-     * @return string
-     */
-    public function getScriptPath()
-    {
-        return 'bedard/webhooks/' . $this->token . '.sh';
-    }
-
-    /**
      * Returns the script with normalized line endings
      *
      * @return void
@@ -178,7 +168,7 @@ class Hook extends Model
      *
      * @return integer
      */
-    public function getLogsCountAttribute()
+    public function getLogsCountAttribute($logs)
     {
         return array_key_exists('logs_count', $this->attributes)
             ? (int) $this->attributes['logs_count']
