@@ -66,4 +66,28 @@ class HookTest extends PluginTestCase
         $this->setExpectedException('Bedard\Webhooks\Exceptions\ScriptDisabledException');
         $hook->executeScript();
     }
+
+    public function test_finding_a_hook_by_token_and_method()
+    {
+        $hook = $this->newHook(['http_method' => 'get']);
+        $this->assertEquals($hook->id, Hook::findByTokenAndMethod($hook->token, 'get')->id);
+    }
+
+    public function test_hooks_can_be_enabled_and_disabled_via_scopes()
+    {
+        $hook = $this->newHook(['is_enabled' => true]);
+
+        Hook::whereId($hook->id)->disable();
+        $this->assertEquals(false, Hook::find($hook->id)->is_enabled);
+
+        Hook::whereId($hook->id)->enable();
+        $this->assertEquals(true, Hook::find($hook->id)->is_enabled);
+    }
+
+    public function test_queueing_a_script_for_execution()
+    {
+        $hook = $this->newHook(['script' => 'echo hello']);
+        $hook->queueScript();
+        $this->assertEquals(1, Log::whereHookId($hook->id)->count());
+    }
 }
