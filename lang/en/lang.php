@@ -72,7 +72,7 @@ return [
             'output' => 'Output',
         ],
         'columns' => [
-            'id' => 'ID',
+            'id' => 'Log',
             'created_at' => 'Date executed',
         ],
     ],

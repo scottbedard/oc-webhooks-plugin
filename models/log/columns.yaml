@@ -4,7 +4,9 @@
 
 columns:
     id:
+        width: 100px
         label: bedard.webhooks::lang.logs.columns.id
 
     created_at:
         label: bedard.webhooks::lang.logs.columns.created_at
+        type: datetime

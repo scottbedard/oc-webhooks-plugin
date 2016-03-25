@@ -12,6 +12,6 @@ fields:
         label: bedard.webhooks::lang.logs.form.output
         type: codeeditor
         readOnly: true
-        size: huge
+        size: giant
         language: bash
         margin: 10
