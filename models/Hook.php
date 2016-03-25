@@ -35,6 +35,13 @@ class Hook extends Model
     ];
 
     /**
+     * @var array Attribute casting
+     */
+    protected $casts = [
+        'is_enabled' => 'boolean',
+    ];
+
+    /**
      * @var array Datetime fields
      */
     protected $dates = [
