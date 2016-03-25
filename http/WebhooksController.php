@@ -12,7 +12,8 @@ class WebhooksController extends Controller
     /**
      * Execute a webhook
      *
-     * @return \RainLab\Blog\Models\Post
+     * @param  string   $token
+     * @return Response
      */
     public function execute($token)
     {

@@ -6,8 +6,8 @@ return [
     // Plugin
     //
     'plugin' => [
-        'name' => 'Web Hooks',
-        'description' => 'Create web hooks to integrate your application with external services.',
+        'name' => 'Webhook',
+        'description' => 'Integrate your application with external services.',
     ],
 
     //
@@ -22,15 +22,15 @@ return [
     // Hooks
     //
     'hooks' => [
-        'controller' => 'Web Hooks',
-        'copied_to_clipboard' => 'Copied webhook to clipboard!',
+        'controller' => 'Webhook',
+        'copied_to_clipboard' => 'URL successfully copied to keyboard.',
         'disable' => 'Disable',
         'enable' => 'Enable',
         'execute' => 'Execute',
         'execute_running' => 'Executing...',
         'execute_success' => 'Successfully executed webhook.',
         'execute_failed' => 'Failed to execute webhook.',
-        'list_title' => 'Manage Web Hooks',
+        'list_title' => 'Manage Webhooks',
         'model' => 'Hook',
         'status_enabled' => 'Enabled',
         'status_enabled_msg' => 'Successfully enabled the selected webhooks.',
@@ -82,7 +82,7 @@ return [
     //
     'responses' => [
         'success' => 'Success',
-        'failed' => 'Failed to execute web hook script.',
-        'not_found' => 'Web hook not found.',
+        'failed' => 'Failed',
+        'not_found' => 'Not found',
     ],
 ];
