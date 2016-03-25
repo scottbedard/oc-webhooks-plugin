@@ -44,6 +44,15 @@ class Hook extends Model
     ];
 
     /**
+     * @var array Relations
+     */
+    public $hasMany = [
+        'logs' => [
+            'Bedard\Webhooks\Models\Log',
+        ],
+    ];
+
+    /**
      * Generate a unique token
      *
      * @return void
@@ -56,32 +65,57 @@ class Hook extends Model
     }
 
     /**
-     * @var array Relations
-     */
-    public $hasMany = [
-        'logs' => [
-            'Bedard\Webhooks\Models\Log',
-        ],
-    ];
-
-    /**
      * Execute the script and log the output
      *
      * @return boolean
      */
-    public function execute()
+    public function queueScript()
     {
+        $id = $this->id;
+        Queue::push(function($job) use ($id) {
+            $hook = Hook::findOrFail($id)->executeScript();
+        });
+    }
+
+    /**
+     * Execute the shell script and log the output
+     *
+     * @return string
+     */
+    public function executeScript()
+    {
+        // Make sure the script is enabled
         if (!$this->is_enabled) {
             throw new ScriptDisabledException();
         }
 
-        $id = $this->id;
-        Queue::push(function($job) use ($id) {
-            $hook = Hook::find($id);
-            $output = shell_exec($hook->singleLineScript);
-            $hook->logOutput($output);
-            $hook->touchExecutedAt();
-        });
+        // Run the script and log the output
+        $output = shell_exec($this->script);
+        Log::create(['hook_id' => $this->id, 'output' => $output]);
+
+        // Update our executed_at timestamp
+        $this->executed_at = Carbon::now();
+        $this->save();
+    }
+
+    /**
+     * Returns the file path of our hook's shell script
+     *
+     * @return string
+     */
+    public function getScriptPath()
+    {
+        return 'bedard/webhooks/' . $this->token . '.sh';
+    }
+
+    /**
+     * Returns the script with normalized line endings
+     *
+     * @return void
+     */
+    public function getScriptAttribute($script)
+    {
+        return preg_replace('/\r\n?/', PHP_EOL, $script);
     }
 
     /**
@@ -152,17 +186,6 @@ class Hook extends Model
     }
 
     /**
-     * Returns the shell script as a single line
-     *
-     * @return string
-     */
-    public function getSingleLineScriptAttribute()
-    {
-        $script = trim(preg_replace('/[\r\n]+/', " && ", $this->script));
-        return $script;
-    }
-
-    /**
      * Returns a url to this webhook
      *
      * @return string
@@ -170,30 +193,5 @@ class Hook extends Model
     public function getUrlAttribute()
     {
         return url('bedard/webhooks', [ 'token' => $this->token ]);
-    }
-
-    /**
-     * Log some output
-     *
-     * @param  string   $output
-     * @return \Bedard\Webhooks\Models\Log
-     */
-    public function logOutput($output)
-    {
-        return Log::create([
-            'hook_id' => $this->id,
-            'output' => $output,
-        ]);
-    }
-
-    /**
-     * Touch the model's executed_at timestamp
-     *
-     * @return boolean
-     */
-    public function touchExecutedAt()
-    {
-        $this->executed_at = Carbon::now();
-        return $this->save();
     }
 }

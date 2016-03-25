@@ -34,7 +34,7 @@ class HookTest extends PluginTestCase
     {
         $hook = $this->newHook(['script' => 'echo 12345']);
         $this->assertNull($hook->executed_at);
-        $hook->execute();
+        $hook->executeScript();
 
         $log = Log::whereHookId($hook->id)->first();
         $this->assertEquals(12345, $log->output);
@@ -44,7 +44,7 @@ class HookTest extends PluginTestCase
     {
         $dummy1 = $this->newHook();
         $dummy2 = $this->newHook();
-        $dummy2->execute();
+        $dummy2->executeScript();
 
         $this->assertEquals(0, Hook::joinLogsCount()->find($dummy1->id)->logsCount);
         $this->assertEquals(1, Hook::joinLogsCount()->find($dummy2->id)->logsCount);
@@ -60,27 +60,10 @@ class HookTest extends PluginTestCase
     public function test_only_enabled_hooks_can_be_executed()
     {
         $hook = $this->newHook(['is_enabled' => true]);
-        $hook->execute();
+        $hook->executeScript();
 
         $hook->is_enabled = false;
         $this->setExpectedException('Bedard\Webhooks\Exceptions\ScriptDisabledException');
-        $hook->execute();
-    }
-
-    public function test_multiline_scripts_are_compressed_to_a_single_line()
-    {
-        $hook1 = $this->newHook(['script' =>
-"echo hello
-echo world"
-        ]);
-
-        $hook2 = $this->newHook(['script' =>
-"echo foo
-
-echo bar"
-        ]);
-
-        $this->assertEquals('echo hello && echo world', $hook1->singleLineScript);
-        $this->assertEquals('echo foo && echo bar', $hook2->singleLineScript);
+        $hook->executeScript();
     }
 }
