@@ -90,4 +90,11 @@ class HookTest extends PluginTestCase
         $hook->queueScript();
         $this->assertEquals(1, Log::whereHookId($hook->id)->count());
     }
+
+    public function test_find_and_execute_script_scope()
+    {
+        $hook = $this->newHook(['script' => 'echo hello']);
+        Hook::findAndExecuteScript($hook->id);
+        $this->assertEquals(1, Log::whereHookId($hook->id)->count());
+    }
 }

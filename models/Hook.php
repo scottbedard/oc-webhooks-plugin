@@ -79,9 +79,7 @@ class Hook extends Model
     public function queueScript()
     {
         $id = $this->id;
-        Queue::push(function($job) use ($id) {
-            $hook = Hook::findOrFail($id)->executeScript();
-        });
+        Queue::push(function($job) use ($id) { Hook::findAndExecuteScript($id); });
     }
 
     /**
@@ -128,6 +126,18 @@ class Hook extends Model
             ->whereHttpMethod($httpMethod)
             ->whereToken($token)
             ->firstOrFail();
+    }
+
+    /**
+     * Find a hook and execute it's script
+     *
+     * @param  \October\Rain\Database\Builder   $query
+     * @param  integer                          $id
+     * @return \October\Rain\Database\Builder
+     */
+    public function scopeFindAndExecuteScript($query, $id)
+    {
+        return $query->find($id)->executeScript();
     }
 
     /**
