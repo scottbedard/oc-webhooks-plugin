@@ -79,7 +79,7 @@ class Hook extends Model
     public function queueScript()
     {
         $id = $this->id;
-        Queue::push(function($job) use ($id) { Hook::findAndExecuteScript($id); });
+        Queue::push(function() use ($id) { Hook::findAndExecuteScript($id); });
     }
 
     /**
@@ -118,7 +118,7 @@ class Hook extends Model
      *
      * @param  \October\Rain\Database\Builder   $query
      * @param  string                           $token
-     * @param  $httpMethod                      $httpMethod
+     * @param  string                           $httpMethod
      * @return \October\Rain\Database\Builder
      */
     public function scopeFindByTokenAndMethod($query, $token, $httpMethod) {
