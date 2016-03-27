@@ -1,24 +1,13 @@
 # oc-webhooks-plugin
-<!-- October Marketplace
-[![GitHub stars](https://img.shields.io/github/stars/scottbedard/oc-webhooks-plugin.svg?style=social&label=Star)](https://github.com/scottbedard/oc-webhooks-plugin)
--->
+
 [![Build Status](https://travis-ci.org/scottbedard/oc-webhooks-plugin.svg?branch=master)](https://travis-ci.org/scottbedard/oc-webhooks-plugin)
-[![Scrutinizer](https://img.shields.io/scrutinizer/g/scottbedard/oc-webhooks-plugin.svg)](https://scrutinizer-ci.com/g/scottbedard/oc-webhooks-plugin)
 [![Coverage Status](https://coveralls.io/repos/github/scottbedard/oc-webhooks-plugin/badge.svg?branch=master)](https://coveralls.io/github/scottbedard/oc-webhooks-plugin?branch=master)
+[![Scrutinizer](https://img.shields.io/scrutinizer/g/scottbedard/oc-webhooks-plugin.svg)](https://scrutinizer-ci.com/g/scottbedard/oc-webhooks-plugin)
 [![License](https://img.shields.io/github/license/scottbedard/oc-webhooks-plugin.svg)](https://github.com/scottbedard/oc-webhooks-plugin/blob/master/LICENSE.md)
 
 This plugin allows you to create shell scripts that respond to unique URLs. These scripts can be particularly useful for deploying your plugins and themes.
 
 With that said, _use your head_. Don't expose your site to massive security problems by allowing malicious code into your scripts.
-
-<!-- October Marketplace
-### This plugin is free!
-Although this plugin is listed as paid in the October marketplace, that doesn't mean it is. If you want to buy me a beer, thanks, you're awesome! Just remember, this plugin is open source and completely free under the MIT license. If you don't want to pay, that's perfectly ok, here is how you install the plugin for free.
-```bash
-git clone https://github.com/scottbedard/oc-webhooks-plugin.git plugins/bedard/webhooks
-php artisan plugin:refresh Bedard.Webhooks
-```
--->
 
 ### GitHub "push to deploy" example
 
