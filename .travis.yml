@@ -14,6 +14,7 @@ matrix:
 before_script:
   - wget http://getcomposer.org/composer.phar
   - php composer.phar install --dev --no-interaction
+  - composer self-update
   - git clone https://github.com/octobercms/october.git
   - mkdir -p ./october/plugins/bedard/webhooks
   - mv !(october) october/plugins/bedard/webhooks
