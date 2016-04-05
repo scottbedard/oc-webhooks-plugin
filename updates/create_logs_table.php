@@ -11,7 +11,7 @@ class CreateLogsTable extends Migration
         Schema::create('bedard_webhooks_logs', function($table)
         {
             $table->engine = 'InnoDB';
-            $table->increments('id')->nullable();
+            $table->increments('id');
             $table->integer('hook_id')->unsigned()->index();
             $table->longText('output')->nullable();
             $table->text('referrer')->nullable();
